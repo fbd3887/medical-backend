@@ -1,0 +1,84 @@
+service: medical-serverless-backend
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  stage: prod
+  region: us-east-1
+  environment:
+    USER_TABLE: ${self:service}-${self:provider.name}-Users
+    JWT_SECRET: ${self:custom.secrets.jwtSecret}
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - dynamodb:Query
+        - dynamodb:PutItem
+        - dynamodb:DeleteItem
+        - dynamodb:UpdateItem
+        - dynamodb:GetItem
+      Resource: !Sub "arn:aws:dynamodb:${opt:region, self:provider.region}:${AWS::AccountId}:table/${self:provider.environment.USER_TABLE}"
+
+custom:
+  secrets: ${file(jwt_secret.json)}
+  stage: ${opt:stage, self:provider.stage}
+  allowedHeaders:
+    - Accept
+    - Content-Type
+    - Content-Length
+    - Authorization
+    - X-Amz-Date
+    - X-Api-Key
+    - X-Amz-Security-Token
+    - X-Amz-User-Agent
+
+
+functions:
+  login:
+    handler: login.handler
+    description: POST/login          
+    events:
+      - http:
+          path: login
+          method: post
+          request:
+            schema:
+              application/json: ${file(request_validator_login.json)}
+          cors:
+            origin: '*'
+            headers: ${self:custom.allowedHeaders}
+
+resources:
+  Resources:
+    UserTable:
+      Type: AWS::DynamoDB::Table
+      DeletionPolicy: Retain
+      Properties:
+        TableName: ${self:provider.environment.USER_TABLE}
+        AttributeDefinitions:  
+          - AttributeName: user_name
+            AttributeType: S
+          - AttributeName: timestamp
+            AttributeType: N
+          - AttributeName: expires
+            AttributeType: N  
+        KeySchema:
+          - AttributeName: user_name
+            KeyType: HASH
+          - AttributeName: timestamp
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        LocalSecondaryIndexes:
+          - IndexName: lsi_user
+            KeySchema:
+              - AttributeName: user_name
+                KeyType: HASH
+              - AttributeName: expires
+                KeyType: RANGE
+            Projection:
+              ProjectionType: ALL
+
