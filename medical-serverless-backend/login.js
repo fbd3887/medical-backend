@@ -7,16 +7,19 @@ const user_table = process.env.USER_TABLE;
 
 
 module.exports.handler = async(event) => {
-  const {user_name,password} = JSON.parse(event.body);
-
+  const {email_id,password} = JSON.parse(event.body);
+  let user_name = email_id.split(/[@]/);
+  console.log(user_name);
   try {
     let params = {
       TableName: user_table,
-      KeyConditionExpression: "user_name = :user_name",
+      KeyConditionExpression: "user_name = :user_name AND email_id = :email_id",
       ExpressionAttributeValues: {
-          ":user_name": user_name
+          ":user_name": user_name[0],
+          ":email_id" : email_id
       },
     };
+
     let data = await dynamodb.query(params).promise();
     
     if(data.Count === 0){
@@ -39,7 +42,9 @@ module.exports.handler = async(event) => {
     // Issue JWT
     const user = {
       user_name: user_name,
+      email_id: email_id
     };
+  
     const token = jwt.sign({user:user}, process.env.JWT_SECRET,{});
       return{ // Success response
         statusCode: 200,

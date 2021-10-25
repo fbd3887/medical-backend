@@ -36,7 +36,7 @@ const user_error = {
     NO_AUTH_TOKEN: 'Authorization token not included',
     USER_NAME: 'user doesnot exixts',
     DEVICE_EXISTS : 'deviceId already exixts',
-    No_USER: 'invalid username/password',
+    No_USER: 'invalid emailid',
     INTERNAL: 'internal error',
     BAD_PASS: 'invalid password',
     EXPIRE:   'user expired',

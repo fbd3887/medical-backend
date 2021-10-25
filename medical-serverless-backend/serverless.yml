@@ -11,7 +11,8 @@ provider:
   stage: prod
   region: us-east-1
   environment:
-    USER_TABLE: ${self:service}-${self:provider.name}-Users
+    BUILD_NUMBER: 6
+    USER_TABLE: ${self:service}-${self:provider.name}-Users-${self:provider.environment.BUILD_NUMBER}
     JWT_SECRET: ${self:custom.secrets.jwtSecret}
 
   iamRoleStatements:
@@ -53,6 +54,21 @@ functions:
             origin: '*'
             headers: ${self:custom.allowedHeaders}
 
+  register:
+    handler: register.handler
+    description: POST/register          
+    events:
+      - http:
+          path: register
+          method: post
+          request:
+            schema:
+              application/json: ${file(request_validator_register.json)}
+          cors:
+            origin: '*'
+            headers: ${self:custom.allowedHeaders} 
+  
+
 resources:
   Resources:
     UserTable:
@@ -61,16 +77,19 @@ resources:
       Properties:
         TableName: ${self:provider.environment.USER_TABLE}
         AttributeDefinitions:  
-          - AttributeName: user_name
+          - AttributeName: email_id
             AttributeType: S
           - AttributeName: timestamp
             AttributeType: N
-          - AttributeName: expires
-            AttributeType: N  
+          - AttributeName: user_name
+            AttributeType: S
+          - AttributeName: phone_num
+            AttributeType: S  
+           
         KeySchema:
           - AttributeName: user_name
             KeyType: HASH
-          - AttributeName: timestamp
+          - AttributeName: email_id
             KeyType: RANGE
         ProvisionedThroughput:
           ReadCapacityUnits: 1
@@ -80,8 +99,21 @@ resources:
             KeySchema:
               - AttributeName: user_name
                 KeyType: HASH
-              - AttributeName: expires
+              - AttributeName: timestamp
                 KeyType: RANGE
             Projection:
               ProjectionType: ALL
+        GlobalSecondaryIndexes: 
+          - IndexName: gsi_user
+            KeySchema:
+              - AttributeName: email_id
+                KeyType: HASH
+              - AttributeName: phone_num
+                KeyType: RANGE
+            Projection:
+              ProjectionType: ALL
+            ProvisionedThroughput:
+              ReadCapacityUnits: 1
+              WriteCapacityUnits: 1 
+        
 
