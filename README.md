@@ -19,22 +19,23 @@
 
 ### APIS
 #### Login Api
-#####Method: POST
+
+##### Method: POST
 https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/login
-#####Request Body: 
+##### Request Body: 
 {
     "user_name": "Admin007",
     "password": "password"
 }
 
-#####Response Body: {
+##### Response Body: {
     "Success": true,
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfbmFtZSI6IkFkbWluMDA3In0sImlhdCI6MTYzNTEwNDI5OX0.enNTRA_0tVw-RW8qWZysXb5UMOsU7wfp0EdCUXRJWbw"
 }
 
-#####Method: POST
+##### Method: POST
 https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
-#####Request Body:  {
+##### Request Body:  {
     "email_id": "admin2@gmail.com",
     "password": "password",
     "phone_num": "1234567",
@@ -42,7 +43,7 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
     "finance" : "21342",
     "education" : "Degree"
 }
-#####Response Body: {
+##### Response Body: {
     "Success": true,
     "user": {
         "email_id": "admin2@gmail.com",
