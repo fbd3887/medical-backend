@@ -24,7 +24,7 @@
 https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/login
 ##### Request Body: 
     {
-    "user_name": "Admin007",
+    "email_id": "admin2@gmail.com",
     "password": "password"
     }
 
