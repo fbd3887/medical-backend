@@ -38,7 +38,7 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/login
 https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
 ##### Request Body:  
     {
-    "email_id": "hopeful1@gmail.com",
+    "email_id": "hopeful2@gmail.com",
     "password": "password",
     "phone_num": "1234567",
     "occupation" : "govenment Service",
@@ -53,28 +53,30 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
     "cramp_cycle":2,
     "life_cycle":1,
     "preg_cycle":1
-}
+    }
+
 ##### Response Body: 
-    {
+   {
     "Success": true,
     "user": {
-        "email_id": "hopeful1@gmail.com",
+        "email_id": "hopeful2@gmail.com",
         "password": "password",
         "phone_num": "1234567",
         "occupation": "govenment Service",
         "finance": "21342",
         "dob": "1992-09-18",
         "education": "Degree",
-        "menstrual_cycle": "28 Days",
-        "bleed_cycle": "normal bleeding",
+        "menstrual_cycle": 1,
+        "bleed_cycle": 2,
         "biological_age": "23",
         "overy_age": "35",
         "amh_level": "3.10",
-        "cramp_cycle": "do not experience pain",
-        "preg_cycle": "never pragnent and dont want to get pregnent",
-        "user_name": "hopeful1",
-        "timestamp": 1637173061,
-        "expires": 1652725061
+        "cramp_cycle": 2,
+        "life_cycle": 1,
+        "preg_cycle": 1,
+        "user_name": "hopeful2",
+        "timestamp": 1637174307,
+        "expires": 1652726307
     }
 }
 

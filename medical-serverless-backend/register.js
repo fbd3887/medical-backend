@@ -73,12 +73,12 @@
             }
         }).promise();
         
-        item.menstrual_cycle = util.getMenstrualCycle().get(item.menstrual_cycle);
-        item.bleed_cycle = util.bleedCycle().get(item.bleed_cycle);
-        item.cramp_cycle  = util.crampsCycle().get(item.cramp_cycle);
-        item.life_cycle = util.currentLife().get(item.life_cycles);
-        item.preg_cycle = util.pragnencyCycle().get(item.preg_cycle);
-        
+        //item.menstrual_cycle = util.getMenstrualCycle().get(item.menstrual_cycle);
+        //item.bleed_cycle = util.bleedCycle().get(item.bleed_cycle);
+        //item.cramp_cycle  = util.crampsCycle().get(item.cramp_cycle);
+        //item.life_cycle = util.currentLife().get(item.life_cycles);
+        //item.preg_cycle = util.pragnencyCycle().get(item.preg_cycle);
+
         return {
             statusCode: 200,
             headers: util.getResponseHeaders(),
