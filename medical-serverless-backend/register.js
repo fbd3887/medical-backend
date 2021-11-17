@@ -14,9 +14,10 @@
  
  exports.handler  = async(event)=>{
     try{
+        let isHistoryPresent = false;
         let item = JSON.parse(event.body);
-        let emailId = item.email_id;
-        const user_name = emailId.split(/[@]/);
+        let emailId = item.email_id; 
+        let user_name = emailId.split(/[@]/);
         item.user_name = String(user_name[0]);
         console.log(user_name[0]);
         let paramsUserName = {

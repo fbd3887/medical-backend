@@ -43,7 +43,13 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
     "phone_num": "1234567",
     "occupation" : "govenment Service",
     "finance" : "21342",
-    "education" : "Degree"
+    "education" : "Degree",
+    "history": {
+        "menstrual":"28",
+        "pregnant":true,
+        "cramps":true,
+        "bleed":0,
+        "lifestyle":["smoking","alcohol","stress"]}
     }
 ##### Response Body: 
     {
