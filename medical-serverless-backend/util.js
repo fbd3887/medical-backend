@@ -43,11 +43,58 @@ const user_error = {
     USER_EXISTS:'username already taken', 
   }
 
+let getMenstrualCycle =()=>{
+    const menCycle = new Map();
+    menCycle.set(1,'28 Days');
+    menCycle.set(2,'30 Days');
+    menCycle.set(3,'Other');
+    return menCycle;
+}
+
+let pragnencyCycle = ()=>{
+    const pregCycle = new Map();
+    pregCycle.set(1,'never pragnent and dont want to get pregnent');
+    pregCycle.set(2,'never pregnent but want to get pregnent');
+    pregCycle.set(3,'pregnent many times');
+    return pregCycle;
+}
+
+
+let crampsCycle = ()=>{
+    const crampsCycles = new Map();
+    crampsCycles.set(1,'experience pain');
+    crampsCycles.set(2,'do not experience pain');
+    return crampsCycles;
+}
+
+let bleedCycle = ()=>{
+    const bleedCycles = new Map();
+    bleedCycles.set(1,'heavy bleeding');
+    bleedCycles.set(2,'normal bleeding');
+    bleedCycles.set(3,'light bleeding');
+    return bleedCycles;
+}
+
+let currentLife = ()=>{
+    const lifestyle = new Map();
+    lifestyle.set(1,'smoking');
+    lifestyle.set(2,'alcohol consumption');
+    lifestyle.set(3,'frequently staying up');
+    lifestyle.set(4,'feeling stressed out');
+    lifestyle.set(5,'None of the above');
+    return lifestyle;
+}
+
 
 module.exports = {
     getResponseHeaders,
     user_error,
     getContentType,
     postErrorResponse,
-    varifyToken
+    varifyToken,
+    currentLife,
+    bleedCycle,
+    pragnencyCycle,
+    crampsCycle,
+    getMenstrualCycle
 }

@@ -14,10 +14,9 @@
  
  exports.handler  = async(event)=>{
     try{
-        let isHistoryPresent = false;
         let item = JSON.parse(event.body);
         let emailId = item.email_id; 
-        let user_name = emailId.split(/[@]/);
+        const user_name = emailId.split(/[@]/);
         item.user_name = String(user_name[0]);
         console.log(user_name[0]);
         let paramsUserName = {
@@ -73,6 +72,12 @@
              };
             }
         }).promise();
+        
+        item.menstrual_cycle = util.getMenstrualCycle().get(item.menstrual_cycle);
+        item.bleed_cycle = util.bleedCycle().get(item.bleed_cycle);
+        item.cramp_cycle  = util.crampsCycle().get(item.cramp_cycle);
+        item.life_cycle = util.currentLife().get(item.life_cycles);
+        item.preg_cycle = util.pragnencyCycle().get(item.preg_cycle);
         
         return {
             statusCode: 200,

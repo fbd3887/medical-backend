@@ -180,7 +180,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/medical-serverless-backend/prod/1637168491716-2021-11-17T17:01:31.716Z/medical-serverless-backend.zip"
+          "S3Key": "serverless/medical-serverless-backend/prod/1637173093011-2021-11-17T18:18:13.011Z/medical-serverless-backend.zip"
         },
         "Handler": "login.handler",
         "Runtime": "nodejs12.x",
@@ -213,7 +213,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/medical-serverless-backend/prod/1637168491716-2021-11-17T17:01:31.716Z/medical-serverless-backend.zip"
+          "S3Key": "serverless/medical-serverless-backend/prod/1637173093011-2021-11-17T18:18:13.011Z/medical-serverless-backend.zip"
         },
         "Handler": "register.handler",
         "Runtime": "nodejs12.x",
@@ -239,25 +239,25 @@
         "RegisterLogGroup"
       ]
     },
-    "LoginLambdaVersiondzduuiq5gKH63yyEF4lQaLN960SvZvsPrUr0PGhcdwI": {
+    "LoginLambdaVersionNPVrZXPa6JiiRTD5OwQvrJU84F8apbaQwNvN5DRkA": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "LoginLambdaFunction"
         },
-        "CodeSha256": "hxOldE3r4sz2aKMWx915Y8ZmGyiC7+l2pU0MtK0L0uY=",
+        "CodeSha256": "nZd/xE/HVOu9tlyA1hyG5QWA4ponT2i3zWbOTRDqaRQ=",
         "Description": "POST/login"
       }
     },
-    "RegisterLambdaVersionaaxENX8A1cf30ul01kqzYMSt8M1NQT4K7myR28HltxA": {
+    "RegisterLambdaVersionaHfWY8Noek6BJiCkpVvvtGrtA1w7taIYdq4wev0Mg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "RegisterLambdaFunction"
         },
-        "CodeSha256": "hxOldE3r4sz2aKMWx915Y8ZmGyiC7+l2pU0MtK0L0uY=",
+        "CodeSha256": "nZd/xE/HVOu9tlyA1hyG5QWA4ponT2i3zWbOTRDqaRQ=",
         "Description": "POST/register"
       }
     },
@@ -579,7 +579,7 @@
         }
       }
     },
-    "ApiGatewayDeployment1637168480406": {
+    "ApiGatewayDeployment1637173080875": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -760,7 +760,7 @@
     "LoginLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "LoginLambdaVersiondzduuiq5gKH63yyEF4lQaLN960SvZvsPrUr0PGhcdwI"
+        "Ref": "LoginLambdaVersionNPVrZXPa6JiiRTD5OwQvrJU84F8apbaQwNvN5DRkA"
       },
       "Export": {
         "Name": "sls-medical-serverless-backend-prod-LoginLambdaFunctionQualifiedArn"
@@ -769,7 +769,7 @@
     "RegisterLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "RegisterLambdaVersionaaxENX8A1cf30ul01kqzYMSt8M1NQT4K7myR28HltxA"
+        "Ref": "RegisterLambdaVersionaHfWY8Noek6BJiCkpVvvtGrtA1w7taIYdq4wev0Mg"
       },
       "Export": {
         "Name": "sls-medical-serverless-backend-prod-RegisterLambdaFunctionQualifiedArn"

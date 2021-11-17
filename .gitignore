@@ -1,0 +1,3 @@
+/medical-serverless-backend/.serverless/*
+/medical-serverless-backend/node_modules/*
+/medical-serverless-backend/.mpmignore

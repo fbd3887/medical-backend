@@ -38,34 +38,45 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/login
 https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
 ##### Request Body:  
     {
-    "email_id": "admin2@gmail.com",
+    "email_id": "hopeful1@gmail.com",
     "password": "password",
     "phone_num": "1234567",
     "occupation" : "govenment Service",
     "finance" : "21342",
+    "dob" : "1992-09-18",
     "education" : "Degree",
-    "history": {
-        "menstrual":"28",
-        "pregnant":true,
-        "cramps":true,
-        "bleed":0,
-        "lifestyle":["smoking","alcohol","stress"]}
-    }
+    "menstrual_cycle" : 1,
+    "bleed_cycle" : 2,
+    "biological_age" : "23",
+    "overy_age" : "35",
+    "amh_level" : "3.10",
+    "cramp_cycle":2,
+    "life_cycle":1,
+    "preg_cycle":1
+}
 ##### Response Body: 
     {
     "Success": true,
     "user": {
-        "email_id": "admin2@gmail.com",
+        "email_id": "hopeful1@gmail.com",
         "password": "password",
         "phone_num": "1234567",
         "occupation": "govenment Service",
         "finance": "21342",
+        "dob": "1992-09-18",
         "education": "Degree",
-        "user_name": "admin2",
-        "timestamp": 1635195747,
-        "expires": 1650747747
+        "menstrual_cycle": "28 Days",
+        "bleed_cycle": "normal bleeding",
+        "biological_age": "23",
+        "overy_age": "35",
+        "amh_level": "3.10",
+        "cramp_cycle": "do not experience pain",
+        "preg_cycle": "never pragnent and dont want to get pregnent",
+        "user_name": "hopeful1",
+        "timestamp": 1637173061,
+        "expires": 1652725061
     }
-    }
+}
 
 
 
