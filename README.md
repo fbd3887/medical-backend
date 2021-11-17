@@ -56,7 +56,7 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
     }
 
 ##### Response Body: 
-   {
+    {
     "Success": true,
     "user": {
         "email_id": "hopeful2@gmail.com",
@@ -78,7 +78,7 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
         "timestamp": 1637174307,
         "expires": 1652726307
     }
-}
+    }
 
 
 
