@@ -203,7 +203,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/medical-serverless-backend/prod/1637174087299-2021-11-17T18:34:47.299Z/medical-serverless-backend.zip"
+                "S3Key": "serverless/medical-serverless-backend/prod/1637305143547-2021-11-19T06:59:03.547Z/medical-serverless-backend.zip"
               },
               "Handler": "login.handler",
               "Runtime": "nodejs12.x",
@@ -236,7 +236,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/medical-serverless-backend/prod/1637174087299-2021-11-17T18:34:47.299Z/medical-serverless-backend.zip"
+                "S3Key": "serverless/medical-serverless-backend/prod/1637305143547-2021-11-19T06:59:03.547Z/medical-serverless-backend.zip"
               },
               "Handler": "register.handler",
               "Runtime": "nodejs12.x",
@@ -262,25 +262,25 @@
               "RegisterLogGroup"
             ]
           },
-          "LoginLambdaVersionvvcBrtKiufvnK5BBT0S9rElo3Wfi5vNhfh64sShVA": {
+          "LoginLambdaVersionfBxMpDYBgSTxOS1f3ewhVvgKf7O5oAOUfL08kA6yeM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "LoginLambdaFunction"
               },
-              "CodeSha256": "m7WAm88aKzxZPndLccZvDTqZ4Gd/AFucP5SmqvlYzm4=",
+              "CodeSha256": "ZP5I6Knl2ECX6hUsKiJZx2gO2p4ocVzAhgbykNVM6jU=",
               "Description": "POST/login"
             }
           },
-          "RegisterLambdaVersionS7XXfhn7GU7fXBDXfQUAF9qE1Cd5ACTyrScTBs4Bw": {
+          "RegisterLambdaVersionVbnuNS5gLhnQXrPYErUof9408kivwBb5qAQuL33MtU": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "RegisterLambdaFunction"
               },
-              "CodeSha256": "m7WAm88aKzxZPndLccZvDTqZ4Gd/AFucP5SmqvlYzm4=",
+              "CodeSha256": "ZP5I6Knl2ECX6hUsKiJZx2gO2p4ocVzAhgbykNVM6jU=",
               "Description": "POST/register"
             }
           },
@@ -580,7 +580,13 @@
                 "required": [
                   "email_id",
                   "password",
-                  "phone_num"
+                  "phone_num",
+                  "cramp_cycle",
+                  "menstrual_cycle",
+                  "life_cycle",
+                  "preg_cycle",
+                  "bleed_cycle",
+                  "id_number"
                 ],
                 "properties": {
                   "email_id": {
@@ -597,12 +603,36 @@
                     "type": "string",
                     "title": "phone number schema",
                     "pattern": "[0-9]+$"
+                  },
+                  "cramp_cycle": {
+                    "type": "number",
+                    "title": "cramp cycle schema"
+                  },
+                  "life_cycle": {
+                    "type": "number",
+                    "title": "life cycle schema"
+                  },
+                  "preg_cycle": {
+                    "type": "number",
+                    "title": "preg cycle schema"
+                  },
+                  "menstrual_cycle": {
+                    "type": "number",
+                    "title": "menstrual cycle schema"
+                  },
+                  "bleed_cycle": {
+                    "type": "number",
+                    "title": "bleed cycle schecma"
+                  },
+                  "id_number": {
+                    "type": "number",
+                    "title": "id number schema"
                   }
                 }
               }
             }
           },
-          "ApiGatewayDeployment1637174076988": {
+          "ApiGatewayDeployment1637305133151": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -783,7 +813,7 @@
           "LoginLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "LoginLambdaVersionvvcBrtKiufvnK5BBT0S9rElo3Wfi5vNhfh64sShVA"
+              "Ref": "LoginLambdaVersionfBxMpDYBgSTxOS1f3ewhVvgKf7O5oAOUfL08kA6yeM"
             },
             "Export": {
               "Name": "sls-medical-serverless-backend-prod-LoginLambdaFunctionQualifiedArn"
@@ -792,7 +822,7 @@
           "RegisterLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "RegisterLambdaVersionS7XXfhn7GU7fXBDXfQUAF9qE1Cd5ACTyrScTBs4Bw"
+              "Ref": "RegisterLambdaVersionVbnuNS5gLhnQXrPYErUof9408kivwBb5qAQuL33MtU"
             },
             "Export": {
               "Name": "sls-medical-serverless-backend-prod-RegisterLambdaFunctionQualifiedArn"
@@ -974,7 +1004,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "LoginLambdaVersionvvcBrtKiufvnK5BBT0S9rElo3Wfi5vNhfh64sShVA"
+        "versionLogicalId": "LoginLambdaVersionfBxMpDYBgSTxOS1f3ewhVvgKf7O5oAOUfL08kA6yeM"
       },
       "register": {
         "handler": "register.handler",
@@ -1019,7 +1049,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "RegisterLambdaVersionS7XXfhn7GU7fXBDXfQUAF9qE1Cd5ACTyrScTBs4Bw"
+        "versionLogicalId": "RegisterLambdaVersionVbnuNS5gLhnQXrPYErUof9408kivwBb5qAQuL33MtU"
       }
     },
     "resources": {
@@ -1134,7 +1164,7 @@
     "artifact": "/home/an-19/Documents/gitFree/medical-backend/medical-serverless-backend/.serverless/medical-serverless-backend.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/medical-serverless-backend/prod/1637174087299-2021-11-17T18:34:47.299Z",
+    "artifactDirectoryName": "serverless/medical-serverless-backend/prod/1637305143547-2021-11-19T06:59:03.547Z",
     "artifact": "medical-serverless-backend.zip"
   }
 }

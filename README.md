@@ -38,7 +38,8 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/login
 https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
 ##### Request Body:  
     {
-    "email_id": "hopeful2@gmail.com",
+    "email_id": "hopeful5@gmail.com",
+    "id_number": 234,
     "password": "password",
     "phone_num": "1234567",
     "occupation" : "govenment Service",
@@ -47,7 +48,7 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
     "education" : "Degree",
     "menstrual_cycle" : 1,
     "bleed_cycle" : 2,
-    "biological_age" : "23",
+    "biological_age" : "23",    
     "overy_age" : "35",
     "amh_level" : "3.10",
     "cramp_cycle":2,
@@ -55,28 +56,30 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
     "preg_cycle":1
     }
 
+
 ##### Response Body: 
     {
     "Success": true,
-    "user": {
-        "email_id": "hopeful2@gmail.com",
-        "password": "password",
-        "phone_num": "1234567",
-        "occupation": "govenment Service",
-        "finance": "21342",
-        "dob": "1992-09-18",
-        "education": "Degree",
-        "menstrual_cycle": 1,
-        "bleed_cycle": 2,
-        "biological_age": "23",
-        "overy_age": "35",
-        "amh_level": "3.10",
-        "cramp_cycle": 2,
-        "life_cycle": 1,
-        "preg_cycle": 1,
-        "user_name": "hopeful2",
-        "timestamp": 1637174307,
-        "expires": 1652726307
+        "user": {
+            "email_id": "hopeful5@gmail.com",
+            "id_number": 234,
+            "password": "password",
+            "phone_num": "1234567",
+            "occupation": "govenment Service",
+            "finance": "21342",
+            "dob": "1992-09-18",
+            "education": "Degree",
+            "menstrual_cycle": 1,
+            "bleed_cycle": 2,
+            "biological_age": "23",
+            "overy_age": "35",
+            "amh_level": "3.10",
+            "cramp_cycle": 2,
+            "life_cycle": 1,
+            "preg_cycle": 1,
+            "user_name": "hopeful5",
+            "timestamp": 1637304558,
+            "expires": 1652856558
     }
     }
 

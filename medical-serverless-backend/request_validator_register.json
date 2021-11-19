@@ -3,7 +3,7 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "title": "register Validation",
-    "required": ["email_id","password","phone_num"],
+    "required": ["email_id","password","phone_num","cramp_cycle","menstrual_cycle","life_cycle","preg_cycle","bleed_cycle","id_number"],
     "properties": {
       "email_id":{
         "type": "string",
@@ -19,6 +19,30 @@
         "type": "string",
         "title": "phone number schema",
         "pattern": "[0-9]+$"
+      },
+      "cramp_cycle":{
+        "type" : "number",
+        "title": "cramp cycle schema"
+      },
+      "life_cycle":{
+        "type" : "number",
+        "title": "life cycle schema"
+      },
+      "preg_cycle":{
+        "type" : "number",
+        "title": "preg cycle schema"
+      },
+      "menstrual_cycle":{
+        "type" : "number",
+        "title": "menstrual cycle schema"
+      },
+      "bleed_cycle":{
+        "type" : "number",
+        "title": "bleed cycle schecma"
+      },
+      "id_number":{
+        "type" : "number",
+        "title": "id number schema"
       }
     }
   }
