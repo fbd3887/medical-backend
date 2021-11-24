@@ -18,7 +18,7 @@
 
 
 ### APIS
-#### Login Api
+#### Login API
 
 ##### Method: POST
 https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/login
@@ -34,6 +34,7 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/login
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfbmFtZSI6IkFkbWluMDA3In0sImlhdCI6MTYzNTEwNDI5OX0.enNTRA_0tVw-RW8qWZysXb5UMOsU7wfp0EdCUXRJWbw"
     }
 
+#### Register API
 ##### Method: POST
 https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
 ##### Request Body:  
@@ -84,8 +85,34 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
     }
 
 
-
-
-
-
-
+####FetchUser API
+##### Method GET    
+https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/user
+##### Required Header
+Authorization : '{Token got from login}'
+##### Response Body:
+    {
+    "Success": true,
+    "user": [
+        {
+            "occupation": "govenment Service",
+            "life_cycle": 1,
+            "expires": 1652856332,
+            "menstrual_cycle": 1,
+            "bleed_cycle": 2,
+            "timestamp": 1637304332,
+            "preg_cycle": 1,
+            "phone_num": "1234567",
+            "biological_age": "23",
+            "education": "Degree",
+            "id_number": 234,
+            "overy_age": "35",
+            "dob": "1992-09-18",
+            "cramp_cycle": 2,
+            "finance": "21342",
+            "user_name": "hopeful3",
+            "amh_level": "3.10",
+            "email_id": "hopeful3@gmail.com"
+        }
+        ]
+    }
