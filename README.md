@@ -84,7 +84,6 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
     }
     }
 
-
 ####FetchUser API
 ##### Method GET    
 https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/user

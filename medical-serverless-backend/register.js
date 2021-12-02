@@ -47,7 +47,7 @@
            statusCode: 400,
            headers: util.getResponseHeaders(),
            body: JSON.stringify({Success: false,
-                                 error:util.user_error.USER_EXISTS}),
+                                 error:util.user_error.EMAIL_ADDR}),
          }
         }
 
