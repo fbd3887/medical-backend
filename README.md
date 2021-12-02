@@ -128,7 +128,8 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/updateUser
 ##### Required Header
 Authorization : '{Token got from login}'
 
-#####Request Body
+##### Request Body
+    
     {
     	"phone_num": "1234567",
     	"occupation" : "govenment Service",
@@ -145,7 +146,7 @@ Authorization : '{Token got from login}'
     	"preg_cycle":1
     }
 
-####Response Body
+#### Response Body
     {
     "Success": true,
     "message": "users updated",
