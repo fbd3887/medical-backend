@@ -41,6 +41,7 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
     {
     "email_id": "hopeful5@gmail.com",
     "id_number": 234,
+    "name": "vaibhav",
     "password": "password",
     "phone_num": "1234567",
     "occupation" : "govenment Service",
@@ -58,31 +59,32 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
     }
 
 
+
 ##### Response Body: 
     {
     "Success": true,
-        "user": {
-            "email_id": "hopeful5@gmail.com",
-            "id_number": 234,
-            "password": "password",
-            "phone_num": "1234567",
-            "occupation": "govenment Service",
-            "finance": "21342",
-            "dob": "1992-09-18",
-            "education": "Degree",
-            "menstrual_cycle": 1,
-            "bleed_cycle": 2,
-            "biological_age": "23",
-            "overy_age": "35",
-            "amh_level": "3.10",
-            "cramp_cycle": 2,
-            "life_cycle": 1,
-            "preg_cycle": 1,
-            "user_name": "hopeful5",
-            "timestamp": 1637304558,
-            "expires": 1652856558
+    "user": {
+        "email_id": "hopeful7@gmail.com",
+        "id_number": 234,
+        "name": "vaibhav",
+        "phone_num": "1234567",
+        "occupation": "govenment Service",
+        "finance": "21342",
+        "dob": "1992-09-18",
+        "education": "Degree",
+        "menstrual_cycle": 1,
+        "bleed_cycle": 2,
+        "biological_age": "23",
+        "overy_age": "35",
+        "amh_level": "3.10",
+        "cramp_cycle": 2,
+        "life_cycle": 1,
+        "preg_cycle": 1,
+        "user_name": "hopeful7",
+        "timestamp": 1638430511,
+        "expires": 1653982511
     }
-    }
+}
 
 ####FetchUser API
 ##### Method GET    
@@ -115,3 +117,48 @@ Authorization : '{Token got from login}'
         }
         ]
     }
+
+
+####UpdateUser API
+##### Method POST    
+https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/updateUser
+##### Required Header
+Authorization : '{Token got from login}'
+#####Request Body
+    {
+    "phone_num": "1234567",
+    "occupation" : "govenment Service",
+    "finance" : "21342",
+    "dob" : "1992-09-18",
+    "education" : "Degree",
+    "menstrual_cycle" : 1,
+    "bleed_cycle" : 2,
+    "biological_age" : "23",    
+    "overy_age" : "35",
+    "amh_level" : "3.10",
+    "cramp_cycle":2,
+    "life_cycle":1,
+    "preg_cycle":1
+    }
+#####Response Body
+    {
+    "Success": true,
+    "message": "users updated",
+    "data": {
+        "phone_num": "1234567",
+        "occupation": "govenment Service",
+        "finance": "21342",
+        "dob": "1992-09-18",
+        "education": "Degree",
+        "menstrual_cycle": 1,
+        "bleed_cycle": 2,
+        "biological_age": "23",
+        "overy_age": "35",
+        "amh_level": "3.10",
+        "cramp_cycle": 2,
+        "life_cycle": 1,
+        "preg_cycle": 1,
+        "timestamp": 1638430283
+    }
+    }
+

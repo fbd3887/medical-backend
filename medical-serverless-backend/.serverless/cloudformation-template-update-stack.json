@@ -89,6 +89,12 @@
         "LogGroupName": "/aws/lambda/medical-serverless-backend-prod-getUser"
       }
     },
+    "UpdateUserLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/medical-serverless-backend-prod-updateUser"
+      }
+    },
     "IamRoleLambdaExecution": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -186,7 +192,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/medical-serverless-backend/prod/1638414553343-2021-12-02T03:09:13.343Z/medical-serverless-backend.zip"
+          "S3Key": "serverless/medical-serverless-backend/prod/1638430695740-2021-12-02T07:38:15.740Z/medical-serverless-backend.zip"
         },
         "Handler": "login.handler",
         "Runtime": "nodejs12.x",
@@ -219,7 +225,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/medical-serverless-backend/prod/1638414553343-2021-12-02T03:09:13.343Z/medical-serverless-backend.zip"
+          "S3Key": "serverless/medical-serverless-backend/prod/1638430695740-2021-12-02T07:38:15.740Z/medical-serverless-backend.zip"
         },
         "Handler": "register.handler",
         "Runtime": "nodejs12.x",
@@ -252,7 +258,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/medical-serverless-backend/prod/1638414553343-2021-12-02T03:09:13.343Z/medical-serverless-backend.zip"
+          "S3Key": "serverless/medical-serverless-backend/prod/1638430695740-2021-12-02T07:38:15.740Z/medical-serverless-backend.zip"
         },
         "Handler": "getUser.handler",
         "Runtime": "nodejs12.x",
@@ -278,37 +284,81 @@
         "GetUserLogGroup"
       ]
     },
-    "LoginLambdaVersionIvOyfyZNF3yla1c84bxahgNh9Te47vgQfo9UPMw2XQ": {
+    "UpdateUserLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/medical-serverless-backend/prod/1638430695740-2021-12-02T07:38:15.740Z/medical-serverless-backend.zip"
+        },
+        "Handler": "updateUser.handler",
+        "Runtime": "nodejs12.x",
+        "FunctionName": "medical-serverless-backend-prod-updateUser",
+        "MemorySize": 1024,
+        "Timeout": 6,
+        "Description": "POST /updateUser",
+        "Environment": {
+          "Variables": {
+            "BUILD_NUMBER": "6",
+            "USER_TABLE": "medical-serverless-backend-aws-Users-6",
+            "JWT_SECRET": "jwtSecretTokenMedical"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "UpdateUserLogGroup"
+      ]
+    },
+    "LoginLambdaVersionDZuJbqM7fZaGZ1SuzD4nEnfsfwufcw9t8TDEFRFKM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "LoginLambdaFunction"
         },
-        "CodeSha256": "GwmF6HcE/bFzhNH7hhhyuEvgRh/c6CiOcyPZb2piPVs=",
+        "CodeSha256": "rmas5VzMHRiIaaBcLxle8OOf3P1slPewWL44WeHEtIg=",
         "Description": "POST/login"
       }
     },
-    "RegisterLambdaVersionKLhXu0IbeicYeIm6N2gvWIeOkWLcHn0uGsauFhgzdws": {
+    "RegisterLambdaVersionP4CcPG72nQhgwvPAuHetIf5RthLhfTYCIqvwQBeaOU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "RegisterLambdaFunction"
         },
-        "CodeSha256": "GwmF6HcE/bFzhNH7hhhyuEvgRh/c6CiOcyPZb2piPVs=",
+        "CodeSha256": "rmas5VzMHRiIaaBcLxle8OOf3P1slPewWL44WeHEtIg=",
         "Description": "POST/register"
       }
     },
-    "GetUserLambdaVersionPbj2YIzUDAJP7e7tbW0drVW4jHcTbQOWz0aBUQrKeQ": {
+    "GetUserLambdaVersionJBxmJkqFdymsiacVGY5HkWXb6HixXxmi7HxiNDQ64Q": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetUserLambdaFunction"
         },
-        "CodeSha256": "GwmF6HcE/bFzhNH7hhhyuEvgRh/c6CiOcyPZb2piPVs=",
+        "CodeSha256": "rmas5VzMHRiIaaBcLxle8OOf3P1slPewWL44WeHEtIg=",
         "Description": "GET /user"
+      }
+    },
+    "UpdateUserLambdaVersionw2crYaNG1Q2ozcFCbBz0TWQLbDCdBvu180ODIqRXAw": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "UpdateUserLambdaFunction"
+        },
+        "CodeSha256": "rmas5VzMHRiIaaBcLxle8OOf3P1slPewWL44WeHEtIg=",
+        "Description": "POST /updateUser"
       }
     },
     "ApiGatewayRestApi": {
@@ -363,6 +413,21 @@
           ]
         },
         "PathPart": "user",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceUpdateuser": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "ApiGatewayRestApi",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "updateUser",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -497,6 +562,51 @@
         },
         "ResourceId": {
           "Ref": "ApiGatewayResourceUser"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayMethodUpdateuserOptions": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "ResponseModels": {}
+          }
+        ],
+        "RequestParameters": {},
+        "Integration": {
+          "Type": "MOCK",
+          "RequestTemplates": {
+            "application/json": "{statusCode:200}"
+          },
+          "ContentHandling": "CONVERT_TO_TEXT",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Headers": "'Accept,Content-Type,Content-Length,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'"
+              },
+              "ResponseTemplates": {
+                "application/json": ""
+              }
+            }
+          ]
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceUpdateuser"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -657,6 +767,52 @@
         "GetUserLambdaPermissionApiGateway"
       ]
     },
+    "ApiGatewayMethodUpdateuserPost": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "POST",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceUpdateuser"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "UpdateUserLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      },
+      "DependsOn": [
+        "UpdateUserLambdaPermissionApiGateway"
+      ]
+    },
     "ApiGatewayMedicalserverlessbackendRequestValidator": {
       "Type": "AWS::ApiGateway::RequestValidator",
       "Properties": {
@@ -765,7 +921,7 @@
         }
       }
     },
-    "ApiGatewayDeployment1638414542787": {
+    "ApiGatewayDeployment1638430684007": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -777,9 +933,11 @@
         "ApiGatewayMethodLoginOptions",
         "ApiGatewayMethodRegisterOptions",
         "ApiGatewayMethodUserOptions",
+        "ApiGatewayMethodUpdateuserOptions",
         "ApiGatewayMethodLoginPost",
         "ApiGatewayMethodRegisterPost",
-        "ApiGatewayMethodUserGet"
+        "ApiGatewayMethodUserGet",
+        "ApiGatewayMethodUpdateuserPost"
       ]
     },
     "LoginLambdaPermissionApiGateway": {
@@ -862,6 +1020,43 @@
         "FunctionName": {
           "Fn::GetAtt": [
             "GetUserLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
+    "UpdateUserLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "UpdateUserLambdaFunction",
             "Arn"
           ]
         },
@@ -985,7 +1180,7 @@
     "LoginLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "LoginLambdaVersionIvOyfyZNF3yla1c84bxahgNh9Te47vgQfo9UPMw2XQ"
+        "Ref": "LoginLambdaVersionDZuJbqM7fZaGZ1SuzD4nEnfsfwufcw9t8TDEFRFKM"
       },
       "Export": {
         "Name": "sls-medical-serverless-backend-prod-LoginLambdaFunctionQualifiedArn"
@@ -994,7 +1189,7 @@
     "RegisterLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "RegisterLambdaVersionKLhXu0IbeicYeIm6N2gvWIeOkWLcHn0uGsauFhgzdws"
+        "Ref": "RegisterLambdaVersionP4CcPG72nQhgwvPAuHetIf5RthLhfTYCIqvwQBeaOU"
       },
       "Export": {
         "Name": "sls-medical-serverless-backend-prod-RegisterLambdaFunctionQualifiedArn"
@@ -1003,10 +1198,19 @@
     "GetUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetUserLambdaVersionPbj2YIzUDAJP7e7tbW0drVW4jHcTbQOWz0aBUQrKeQ"
+        "Ref": "GetUserLambdaVersionJBxmJkqFdymsiacVGY5HkWXb6HixXxmi7HxiNDQ64Q"
       },
       "Export": {
         "Name": "sls-medical-serverless-backend-prod-GetUserLambdaFunctionQualifiedArn"
+      }
+    },
+    "UpdateUserLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "UpdateUserLambdaVersionw2crYaNG1Q2ozcFCbBz0TWQLbDCdBvu180ODIqRXAw"
+      },
+      "Export": {
+        "Name": "sls-medical-serverless-backend-prod-UpdateUserLambdaFunctionQualifiedArn"
       }
     },
     "ServiceEndpoint": {

@@ -78,7 +78,7 @@
         //item.cramp_cycle  = util.crampsCycle().get(item.cramp_cycle);
         //item.life_cycle = util.currentLife().get(item.life_cycles);
         //item.preg_cycle = util.pragnencyCycle().get(item.preg_cycle);
-
+        delete item.password;
         return {
             statusCode: 200,
             headers: util.getResponseHeaders(),

@@ -78,7 +78,17 @@ functions:
           cors:
             origin: '*'
             headers: ${self:custom.allowedHeaders}
- 
+
+  updateUser:
+    handler: updateUser.handler
+    description: POST /updateUser
+    events:
+      - http:
+          path: updateUser
+          method: post
+          cors:
+            origin: '*'
+            headers: ${self:custom.allowedHeaders}
   
 
 resources:
