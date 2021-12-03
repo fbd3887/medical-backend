@@ -215,7 +215,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/medical-serverless-backend/prod/1638430695740-2021-12-02T07:38:15.740Z/medical-serverless-backend.zip"
+                "S3Key": "serverless/medical-serverless-backend/prod/1638520675381-2021-12-03T08:37:55.381Z/medical-serverless-backend.zip"
               },
               "Handler": "login.handler",
               "Runtime": "nodejs12.x",
@@ -248,7 +248,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/medical-serverless-backend/prod/1638430695740-2021-12-02T07:38:15.740Z/medical-serverless-backend.zip"
+                "S3Key": "serverless/medical-serverless-backend/prod/1638520675381-2021-12-03T08:37:55.381Z/medical-serverless-backend.zip"
               },
               "Handler": "register.handler",
               "Runtime": "nodejs12.x",
@@ -281,7 +281,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/medical-serverless-backend/prod/1638430695740-2021-12-02T07:38:15.740Z/medical-serverless-backend.zip"
+                "S3Key": "serverless/medical-serverless-backend/prod/1638520675381-2021-12-03T08:37:55.381Z/medical-serverless-backend.zip"
               },
               "Handler": "getUser.handler",
               "Runtime": "nodejs12.x",
@@ -314,7 +314,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/medical-serverless-backend/prod/1638430695740-2021-12-02T07:38:15.740Z/medical-serverless-backend.zip"
+                "S3Key": "serverless/medical-serverless-backend/prod/1638520675381-2021-12-03T08:37:55.381Z/medical-serverless-backend.zip"
               },
               "Handler": "updateUser.handler",
               "Runtime": "nodejs12.x",
@@ -944,7 +944,7 @@
               }
             }
           },
-          "ApiGatewayDeployment1638430684007": {
+          "ApiGatewayDeployment1638520665225": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1648,7 +1648,7 @@
     "artifact": "/home/an-19/Documents/gitFree/medical-backend/medical-serverless-backend/.serverless/medical-serverless-backend.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/medical-serverless-backend/prod/1638430695740-2021-12-02T07:38:15.740Z",
+    "artifactDirectoryName": "serverless/medical-serverless-backend/prod/1638520675381-2021-12-03T08:37:55.381Z",
     "artifact": "medical-serverless-backend.zip"
   }
 }

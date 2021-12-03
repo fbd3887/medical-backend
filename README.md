@@ -21,7 +21,7 @@
 #### Login API
 
 ##### Method: POST
-https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/login
+https://prq6xjzpd5.execute-api.us-east-1.amazonaws.com/prod/login
 ##### Request Body: 
     {
     "email_id": "admin2@gmail.com",
@@ -36,7 +36,7 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/login
 
 #### Register API
 ##### Method: POST
-https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
+https://prq6xjzpd5.execute-api.us-east-1.amazonaws.com/prod/register
 ##### Request Body:  
     {
     "email_id": "hopeful5@gmail.com",
@@ -88,7 +88,7 @@ https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/register
 
 ####FetchUser API
 ##### Method GET    
-https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/user
+ https://prq6xjzpd5.execute-api.us-east-1.amazonaws.com/prod/user
 
 ##### Required Header
 Authorization : '{Token got from login}'
@@ -123,7 +123,7 @@ Authorization : '{Token got from login}'
 
 ####UpdateUser API
 ##### Method POST    
-https://2swtcczgla.execute-api.us-east-1.amazonaws.com/prod/updateUser
+https://prq6xjzpd5.execute-api.us-east-1.amazonaws.com/prod/updateUser
 
 ##### Required Header
 Authorization : '{Token got from login}'
@@ -131,19 +131,19 @@ Authorization : '{Token got from login}'
 ##### Request Body
     
     {
-    	"phone_num": "1234567",
-    	"occupation" : "govenment Service",
-    	"finance" : "21342",
-    	"dob" : "1992-09-18",
-    	"education" : "Degree",
-    	"menstrual_cycle" : 1,
-    	"bleed_cycle" : 2,
-    	"biological_age" : "23",    
-    	"overy_age" : "35",
-    	"amh_level" : "3.10",
-    	"cramp_cycle":2,
-    	"life_cycle":1,
-    	"preg_cycle":1
+    "phone_num": "1234567",
+    "occupation" : "govenment Service",
+    "finance" : "21342",
+    "dob" : "1992-09-18",
+    "education" : "Degree",
+    "menstrual_cycle" : 1,
+    "bleed_cycle" : 2,
+    "biological_age" : "23",    
+    "overy_age" : "35",
+    "amh_level" : "3.10",
+    "cramp_cycle":2,
+    "life_cycle":1,
+    "preg_cycle":1
     }
 
 #### Response Body
