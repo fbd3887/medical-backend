@@ -15,7 +15,8 @@
  exports.handler  = async(event)=>{
     try{
         let item = JSON.parse(event.body);
-        let emailId = item.email_id; 
+        let emailId = (item.email_id).toLowerCase();
+        item.email_id = emailId 
         const user_name = emailId.split(/[@]/);
         item.user_name = String(user_name[0]);
         console.log(user_name[0]);

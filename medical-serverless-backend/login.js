@@ -8,7 +8,8 @@ const user_table = process.env.USER_TABLE;
 
 module.exports.handler = async(event) => {
   const {email_id,password} = JSON.parse(event.body);
-  let user_name = email_id.split(/[@]/);
+  let emailId = email_id.toLowerCase();
+  let user_name = emailId.split(/[@]/);
   console.log(user_name);
   try {
     let params = {
@@ -16,7 +17,7 @@ module.exports.handler = async(event) => {
       KeyConditionExpression: "user_name = :user_name AND email_id = :email_id",
       ExpressionAttributeValues: {
           ":user_name": user_name[0],
-          ":email_id" : email_id
+          ":email_id" : emailId
       },
     };
 
@@ -42,7 +43,7 @@ module.exports.handler = async(event) => {
     // Issue JWT
     const user = {
       user_name: user_name,
-      email_id: email_id
+      email_id: emailId
     };
   
     const token = jwt.sign({user:user}, process.env.JWT_SECRET,{});
