@@ -121,7 +121,7 @@ Authorization : '{Token got from login}'
     }
 
 
-####UpdateUser API
+#### UpdateUser API
 ##### Method POST    
 https://prq6xjzpd5.execute-api.us-east-1.amazonaws.com/prod/updateUser
 
@@ -168,3 +168,22 @@ Authorization : '{Token got from login}'
     }
     }
 
+#### Forgot Password API
+##### Method PUT    
+https://prq6xjzpd5.execute-api.us-east-1.amazonaws.com/prod/forgot_password/{email_id}
+
+##### Required Header
+Authorization : '{Token got from login}'
+
+##### Path Parameter
+{email_id}
+
+##### Request Body
+    
+    {"new_password": "123456"}
+
+#### Response Body
+    {
+    "Success": true,
+    "message": "password updated"
+    }

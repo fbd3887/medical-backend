@@ -54,8 +54,8 @@ module.exports.handler = async(event) => {
           token
         })
       } 
-  } catch (e) {
-    console.log(`Error logging in: ${e.message}`);
+  } catch (err) {
+    console.log(`Error logging in: ${err.message}`);
     return{ // Error response
         statusCode: err.statusCode ? err.statusCode : 500,
         headers: util.getResponseHeaders(),

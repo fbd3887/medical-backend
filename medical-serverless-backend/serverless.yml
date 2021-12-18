@@ -79,6 +79,17 @@ functions:
             origin: '*'
             headers: ${self:custom.allowedHeaders}
 
+  forgotPassword:
+    handler: forgotPassword.handler
+    description: PUT /forgot_pasword
+    events:
+      - http:
+          path: forgot_password/{email_id}
+          method: put
+          cors:
+            origin: '*'
+            headers: ${self:custom.allowedHeaders}
+
   updateUser:
     handler: updateUser.handler
     description: POST /updateUser

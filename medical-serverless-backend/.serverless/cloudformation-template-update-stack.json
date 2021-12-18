@@ -89,6 +89,12 @@
         "LogGroupName": "/aws/lambda/medical-serverless-backend-prod-getUser"
       }
     },
+    "ForgotPasswordLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/medical-serverless-backend-prod-forgotPassword"
+      }
+    },
     "UpdateUserLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
@@ -192,7 +198,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/medical-serverless-backend/prod/1638594662393-2021-12-04T05:11:02.393Z/medical-serverless-backend.zip"
+          "S3Key": "serverless/medical-serverless-backend/prod/1639851249297-2021-12-18T18:14:09.297Z/medical-serverless-backend.zip"
         },
         "Handler": "login.handler",
         "Runtime": "nodejs12.x",
@@ -225,7 +231,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/medical-serverless-backend/prod/1638594662393-2021-12-04T05:11:02.393Z/medical-serverless-backend.zip"
+          "S3Key": "serverless/medical-serverless-backend/prod/1639851249297-2021-12-18T18:14:09.297Z/medical-serverless-backend.zip"
         },
         "Handler": "register.handler",
         "Runtime": "nodejs12.x",
@@ -258,7 +264,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/medical-serverless-backend/prod/1638594662393-2021-12-04T05:11:02.393Z/medical-serverless-backend.zip"
+          "S3Key": "serverless/medical-serverless-backend/prod/1639851249297-2021-12-18T18:14:09.297Z/medical-serverless-backend.zip"
         },
         "Handler": "getUser.handler",
         "Runtime": "nodejs12.x",
@@ -284,6 +290,39 @@
         "GetUserLogGroup"
       ]
     },
+    "ForgotPasswordLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/medical-serverless-backend/prod/1639851249297-2021-12-18T18:14:09.297Z/medical-serverless-backend.zip"
+        },
+        "Handler": "forgotPassword.handler",
+        "Runtime": "nodejs12.x",
+        "FunctionName": "medical-serverless-backend-prod-forgotPassword",
+        "MemorySize": 1024,
+        "Timeout": 6,
+        "Description": "PUT /forgot_pasword",
+        "Environment": {
+          "Variables": {
+            "BUILD_NUMBER": "6",
+            "USER_TABLE": "medical-serverless-backend-aws-Users-6",
+            "JWT_SECRET": "jwtSecretTokenMedical"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "ForgotPasswordLogGroup"
+      ]
+    },
     "UpdateUserLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -291,7 +330,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/medical-serverless-backend/prod/1638594662393-2021-12-04T05:11:02.393Z/medical-serverless-backend.zip"
+          "S3Key": "serverless/medical-serverless-backend/prod/1639851249297-2021-12-18T18:14:09.297Z/medical-serverless-backend.zip"
         },
         "Handler": "updateUser.handler",
         "Runtime": "nodejs12.x",
@@ -317,47 +356,58 @@
         "UpdateUserLogGroup"
       ]
     },
-    "LoginLambdaVersion9OHT1M1kFqqiPzWAxiPT2dXqu4MLaRSxuAL0AecXA": {
+    "LoginLambdaVersionHRLSc8n6JhSBhwIPKLiC2VQ1dssJJ2yvs8F7opgO9ds": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "LoginLambdaFunction"
         },
-        "CodeSha256": "44eJ4zEITvfrRHWc8DDmGDh4iTg67+/GDiFm5xsRYlg=",
+        "CodeSha256": "KV44HU7RAwdXh5k+rGqrm4YaoWzzpX7tZqbbIy6iSSs=",
         "Description": "POST/login"
       }
     },
-    "RegisterLambdaVersion9ILDE7tEKJ5VGOwjqqvTsFf26Z2ywXUihcSkXQFIfY": {
+    "RegisterLambdaVersiondKDwITOVl1o7j9lVyUmVpvcSqQCjTNfaYDafxSjKo": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "RegisterLambdaFunction"
         },
-        "CodeSha256": "44eJ4zEITvfrRHWc8DDmGDh4iTg67+/GDiFm5xsRYlg=",
+        "CodeSha256": "KV44HU7RAwdXh5k+rGqrm4YaoWzzpX7tZqbbIy6iSSs=",
         "Description": "POST/register"
       }
     },
-    "GetUserLambdaVersionQBlQWSIsyFPrSCTg7IqOv2wR96oA0p7ShwPRUUKJaT4": {
+    "GetUserLambdaVersionm3mwqtwTvJ7m8FJK4HOkaZeua8N1u0uYnHuEJFTOro": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetUserLambdaFunction"
         },
-        "CodeSha256": "44eJ4zEITvfrRHWc8DDmGDh4iTg67+/GDiFm5xsRYlg=",
+        "CodeSha256": "KV44HU7RAwdXh5k+rGqrm4YaoWzzpX7tZqbbIy6iSSs=",
         "Description": "GET /user"
       }
     },
-    "UpdateUserLambdaVersionfcA0JERbvIvVLndzN37jbK9FHc1B7xOBjUyh3f1rbzk": {
+    "ForgotPasswordLambdaVersion3abG5mbuLbreJiHy2OhMyKmpcpkhA5Ffp7DhkHjt0Kc": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "ForgotPasswordLambdaFunction"
+        },
+        "CodeSha256": "KV44HU7RAwdXh5k+rGqrm4YaoWzzpX7tZqbbIy6iSSs=",
+        "Description": "PUT /forgot_pasword"
+      }
+    },
+    "UpdateUserLambdaVersionqi3wnvK7nyqES5outNSB2xJLVnVWMjhd8t28AH6Xk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateUserLambdaFunction"
         },
-        "CodeSha256": "44eJ4zEITvfrRHWc8DDmGDh4iTg67+/GDiFm5xsRYlg=",
+        "CodeSha256": "KV44HU7RAwdXh5k+rGqrm4YaoWzzpX7tZqbbIy6iSSs=",
         "Description": "POST /updateUser"
       }
     },
@@ -413,6 +463,33 @@
           ]
         },
         "PathPart": "user",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceForgotpassword": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "ApiGatewayRestApi",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "forgot_password",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceForgotpasswordEmailidVar": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceForgotpassword"
+        },
+        "PathPart": "{email_id}",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -562,6 +639,51 @@
         },
         "ResourceId": {
           "Ref": "ApiGatewayResourceUser"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayMethodForgotpasswordEmailidVarOptions": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "ResponseModels": {}
+          }
+        ],
+        "RequestParameters": {},
+        "Integration": {
+          "Type": "MOCK",
+          "RequestTemplates": {
+            "application/json": "{statusCode:200}"
+          },
+          "ContentHandling": "CONVERT_TO_TEXT",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Headers": "'Accept,Content-Type,Content-Length,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,PUT'"
+              },
+              "ResponseTemplates": {
+                "application/json": ""
+              }
+            }
+          ]
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceForgotpasswordEmailidVar"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -767,6 +889,52 @@
         "GetUserLambdaPermissionApiGateway"
       ]
     },
+    "ApiGatewayMethodForgotpasswordEmailidVarPut": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "PUT",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceForgotpasswordEmailidVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "ForgotPasswordLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      },
+      "DependsOn": [
+        "ForgotPasswordLambdaPermissionApiGateway"
+      ]
+    },
     "ApiGatewayMethodUpdateuserPost": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
@@ -921,7 +1089,7 @@
         }
       }
     },
-    "ApiGatewayDeployment1638594653077": {
+    "ApiGatewayDeployment1639851238476": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -933,10 +1101,12 @@
         "ApiGatewayMethodLoginOptions",
         "ApiGatewayMethodRegisterOptions",
         "ApiGatewayMethodUserOptions",
+        "ApiGatewayMethodForgotpasswordEmailidVarOptions",
         "ApiGatewayMethodUpdateuserOptions",
         "ApiGatewayMethodLoginPost",
         "ApiGatewayMethodRegisterPost",
         "ApiGatewayMethodUserGet",
+        "ApiGatewayMethodForgotpasswordEmailidVarPut",
         "ApiGatewayMethodUpdateuserPost"
       ]
     },
@@ -1020,6 +1190,43 @@
         "FunctionName": {
           "Fn::GetAtt": [
             "GetUserLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
+    },
+    "ForgotPasswordLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "ForgotPasswordLambdaFunction",
             "Arn"
           ]
         },
@@ -1180,7 +1387,7 @@
     "LoginLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "LoginLambdaVersion9OHT1M1kFqqiPzWAxiPT2dXqu4MLaRSxuAL0AecXA"
+        "Ref": "LoginLambdaVersionHRLSc8n6JhSBhwIPKLiC2VQ1dssJJ2yvs8F7opgO9ds"
       },
       "Export": {
         "Name": "sls-medical-serverless-backend-prod-LoginLambdaFunctionQualifiedArn"
@@ -1189,7 +1396,7 @@
     "RegisterLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "RegisterLambdaVersion9ILDE7tEKJ5VGOwjqqvTsFf26Z2ywXUihcSkXQFIfY"
+        "Ref": "RegisterLambdaVersiondKDwITOVl1o7j9lVyUmVpvcSqQCjTNfaYDafxSjKo"
       },
       "Export": {
         "Name": "sls-medical-serverless-backend-prod-RegisterLambdaFunctionQualifiedArn"
@@ -1198,16 +1405,25 @@
     "GetUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetUserLambdaVersionQBlQWSIsyFPrSCTg7IqOv2wR96oA0p7ShwPRUUKJaT4"
+        "Ref": "GetUserLambdaVersionm3mwqtwTvJ7m8FJK4HOkaZeua8N1u0uYnHuEJFTOro"
       },
       "Export": {
         "Name": "sls-medical-serverless-backend-prod-GetUserLambdaFunctionQualifiedArn"
       }
     },
+    "ForgotPasswordLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "ForgotPasswordLambdaVersion3abG5mbuLbreJiHy2OhMyKmpcpkhA5Ffp7DhkHjt0Kc"
+      },
+      "Export": {
+        "Name": "sls-medical-serverless-backend-prod-ForgotPasswordLambdaFunctionQualifiedArn"
+      }
+    },
     "UpdateUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateUserLambdaVersionfcA0JERbvIvVLndzN37jbK9FHc1B7xOBjUyh3f1rbzk"
+        "Ref": "UpdateUserLambdaVersionqi3wnvK7nyqES5outNSB2xJLVnVWMjhd8t28AH6Xk"
       },
       "Export": {
         "Name": "sls-medical-serverless-backend-prod-UpdateUserLambdaFunctionQualifiedArn"
