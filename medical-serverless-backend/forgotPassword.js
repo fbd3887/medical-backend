@@ -13,12 +13,12 @@ module.exports.handler = async(event) => {
         console.log(event.body)
         const {new_password} = JSON.parse(event.body);
         console.log(new_password)
-        let authData = util.varifyToken(event.headers);
-        const decoded = jwt.verify(authData, process.env.JWT_SECRET);
-        console.log(decoded)
-        console.log(decoded.user.email_id)
+        //let authData = util.varifyToken(event.headers);
+        //const decoded = jwt.verify(authData, process.env.JWT_SECRET);
+        //console.log(decoded)
+        //console.log(decoded.user.email_id)
         console.log(email_id)
-        if(decoded.user.email_id !== email_id){
+        /*if(decoded.user.email_id !== email_id){
             console.log("failes at token")
             return{
                 statusCode: 400,
@@ -26,7 +26,7 @@ module.exports.handler = async(event) => {
                 body: JSON.stringify({Success: false,
                                     error:util.user_error.EMAIL_ADDR}),
         }
-    }
+    }*/
         let user_name = email_id.split(/[@]/);
         
         let params = {

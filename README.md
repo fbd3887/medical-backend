@@ -172,8 +172,6 @@ Authorization : '{Token got from login}'
 ##### Method PUT    
 https://prq6xjzpd5.execute-api.us-east-1.amazonaws.com/prod/forgot_password/{email_id}
 
-##### Required Header
-Authorization : '{Token got from login}'
 
 ##### Path Parameter
 {email_id}
